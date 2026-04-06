@@ -85,7 +85,7 @@ with col1:
 with col2:
     st.subheader("Filtros Académicos")
     universidad = st.selectbox('Universidad', v_universidades)
-    tipo_formacion = st.selectbox('Tipo de Formación', v_formacion)
+    tipo_formacion = st.selectbox('Tipo de Formación', v_formacion, help="Indica el nivel educativo previo del estudiante.")
     beneficio = st.selectbox('Beneficio', v_beneficio)
     semestre = st.selectbox('Semestre Convocatoria', v_semestre)
     residencia_am = st.selectbox('¿Reside en Área Metropolitana?', v_am)

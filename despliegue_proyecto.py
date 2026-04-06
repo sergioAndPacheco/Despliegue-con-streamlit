@@ -128,15 +128,18 @@ data_preparada.head()
 # Hacemos la predicción con el Tree
 Y_pred = modelo.predict(data_preparada)
 
-# Recorremos las predicciones y aplicamos la lógica
-for prediccion in Y_pred:
-    if prediccion == 1:
-        print(f"Resultado {prediccion}: Es probable que se gradúe")
-    else:
-        print(f"Resultado {prediccion}: No se va a graduar")
+# Hacemos la predicción
+Y_pred = modelo.predict(data_preparada)
 
-data['Prediccion']=Y_pred
-data.head()
+# Tomamos el primer resultado (índice 0)
+resultado = Y_pred[0]
+
+st.subheader("Resultado de la Predicción:")
+
+if resultado == 1:
+    st.success("🎓 **¡Felicidades!** Es probable que el estudiante se gradúe.")
+else:
+    st.error("⚠️ **Atención:** Según el modelo, el estudiante no se va a graduar.")
 
 # Recordar medida de error del modelo
 

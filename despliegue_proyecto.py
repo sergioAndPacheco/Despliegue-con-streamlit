@@ -75,20 +75,25 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Filtros Personales")
-    edad = st.slider('Edad', 13, 62, 20)
+    edad = st.slider('Edad', 13, 70, 20)
     genero = st.selectbox('Género', v_genero)
     estrato = st.selectbox('Estrato', v_estrato)
-    etnia = st.selectbox('Grupo Étnico', v_etnia)
+    etnia = st.selectbox('Grupo Étnico', v_etnia,
+                         help="Pertenencia o autorreconocimiento en grupos étnicos específicos.")
     victima = st.selectbox('¿Es víctima del conflicto?', v_victima)
-    movilidad = st.selectbox('Se desplaza de su lugar de nacimiento?', v_movilidad)
+    movilidad = st.selectbox('Se desplaza de su lugar de nacimiento?', v_movilidad,
+                             help="Indica si el estudiante reside en una ciudad distinta a la de su origen (movilidad territorial).")
 
 with col2:
     st.subheader("Filtros Académicos")
     universidad = st.selectbox('Universidad', v_universidades)
     tipo_formacion = st.selectbox('Tipo de Formación', v_formacion, help="Indica el nivel educativo previo del estudiante.")
-    beneficio = st.selectbox('Beneficio', v_beneficio)
-    semestre = st.selectbox('Semestre Convocatoria', v_semestre)
-    residencia_am = st.selectbox('¿Reside en Área Metropolitana?', v_am)
+    beneficio = st.selectbox('Beneficio', v_beneficio,
+                             help="Tipo de apoyo recibido (ej. pago de matrícula o sostenimiento).")
+    semestre = st.selectbox('Semestre Convocatoria', v_semestre,
+                            help="Semestre académico en el cual el estudiante aplicó al beneficio.")
+    residencia_am = st.selectbox('¿Reside en Área Metropolitana?', v_am,
+                                 help="Indica si el lugar de residencia actual pertenece al núcleo urbano del Área Metropolitana.")
 
 st.divider()
 #Dataframe

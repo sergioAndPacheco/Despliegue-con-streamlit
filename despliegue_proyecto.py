@@ -18,6 +18,7 @@ Original file is located at
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import streamlit as st
 
 #Cargamos el modelo
 import pickle
@@ -27,7 +28,6 @@ modelo, min_max_scaler, variables = pickle.load(open(filename, 'rb'))
 #Interfaz Grafica
 #Se crea interfaz gráfica con streamlit para captura de los datos
 
-import streamlit as st
 
 st.title('Predicción de que el estudiante va a desertar')
 # 1. VECTORES DE VALORES ÚNICOS
@@ -80,7 +80,7 @@ with col1:
     estrato = st.selectbox('Estrato', v_estrato)
     etnia = st.selectbox('Grupo Étnico', v_etnia)
     victima = st.selectbox('¿Es víctima del conflicto?', v_victima)
-    movilidad = st.selectbox('Movilidad Territorial', v_movilidad)
+    movilidad = st.selectbox('Se desplaza de su lugar de nacimiento?', v_movilidad)
 
 with col2:
     st.subheader("Filtros Académicos")
@@ -110,41 +110,6 @@ input_data = {
 # Convertir a DataFrame
 data = pd.DataFrame([input_data])
 
-"""
-import pandas as pd
-
-# 1. Definición de variables de entrada (Simulando los inputs de Streamlit)
-semestre = 1
-beneficio = 'MATRICULA Y SOSTENIMIENTO'
-genero = 'FEMENINO'
-estrato = 'ESTRATO 2'
-etnia = 'NINGUNO'
-victima = 'NO'
-universidad = 'UNIVERSIDAD DE ANTIOQUIA'
-tipo_formacion = 'UNIVERSITARIA'
-edad = 22
-movilidad = True
-residencia_am = 'SI'
-
-# 2. Creación del diccionario con la estructura solicitada
-input_data = {
-    'SEMESTRE DE CONVOCATORIA': semestre,
-    'BENEFICIO OTORGADO': beneficio,
-    'GENERO': genero,
-    'ESTRATO': estrato,
-    'GRUPO ETNICO': etnia,
-    'VICTIMA DEL CONFLICTO ARMADO': victima,
-    'UNIVERSIDAD': universidad,
-    'TIPO DE FORMACION': tipo_formacion,
-    'edad_beneficiario': edad,
-    'movilidad_territorial': movilidad,
-    'Municipio_Residencia_Area_metropolitana': residencia_am
-}
-
-# 3. Conversión a DataFrame de una sola fila
-data = pd.DataFrame([input_data])
-"""
-
 data
 
 #Se realiza la preparación
@@ -160,14 +125,18 @@ data_preparada.head()
 
 """# Prediciones"""
 
-#Hacemos la predicción con el Tree
+# Hacemos la predicción con el Tree
 Y_pred = modelo.predict(data_preparada)
-print(Y_pred)
+
+# Recorremos las predicciones y aplicamos la lógica
+for prediccion in Y_pred:
+    if prediccion == 1:
+        print(f"Resultado {prediccion}: Es probable que se gradúe")
+    else:
+        print(f"Resultado {prediccion}: No se va a graduar")
 
 data['Prediccion']=Y_pred
 data.head()
-
-data
 
 # Recordar medida de error del modelo
 

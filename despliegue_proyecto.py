@@ -28,8 +28,8 @@ modelo, min_max_scaler, variables = pickle.load(open(filename, 'rb'))
 #Interfaz Grafica
 #Se crea interfaz gráfica con streamlit para captura de los datos
 
-
-st.title('Predicción de que el estudiante va a desertar')
+st.set_page_config(page_title="Predicción de Graduación de Becas", page_icon="🎓", layout="wide")
+st.title('Información para Predicción')
 # 1. VECTORES DE VALORES ÚNICOS
 v_semestre = [1, 2]
 v_beneficio = ['MATRICULA', 'MATRICULA Y SOSTENIMIENTO', 'SOSTENIMIENTO']

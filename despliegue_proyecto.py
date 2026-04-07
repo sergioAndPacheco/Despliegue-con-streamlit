@@ -546,7 +546,7 @@ data_preparada=data.copy()
 data_preparada[['edad_beneficiario']]= min_max_scaler.transform(data_preparada[['edad_beneficiario']])
 
 #En despliegue drop_first= False
-data_preparada = pd.get_dummies(data_preparada, columns=['PROGRAMA CURSADO','SUBREGION DE RESIDENCIA','BENEFICIO OTORGADO','ESTRATO','TIPO DE FORMACION','SEMESTRE DE CONVOCATORIA', 'GENERO', 'movilidad_territorial', 'VICTIMA DEL CONFLICTO ARMADO','GRUPO ETNICO','UNIVERSIDAD','Municipio_Residencia_Area_metropolitana','Municipio_Oferta_Area_metropolitana',], drop_first=False, dtype=int)
+data_preparada = pd.get_dummies(data_preparada, columns=['PROGRAMA CURSADO','SUBREGION DE RESIDENCIA','BENEFICIO OTORGADO','ESTRATO','TIPO DE FORMACION','SEMESTRE DE CONVOCATORIA', 'GENERO', 'movilidad_territorial', 'VICTIMA DEL CONFLICTO ARMADO','GRUPO ETNICO','UNIVERSIDAD','Municipio_Residencia_Area_metropolitana','Municipio_Oferta_Area_metropolitana'], drop_first=False, dtype=int)
 data_preparada.head()
 
 #Se adicionan las columnas faltantes
@@ -566,7 +566,7 @@ resultado = Y_pred[0]
 
 st.subheader("Resultado de la Predicción:")
 #print("Resultado de la Predicción:")
-if resultado == '1':
+if resultado == 1:
     st.success("🎓 **¡Felicidades!** Es probable que el estudiante se gradúe.")
     #print("🎓 **¡Felicidades!** Es probable que el estudiante se gradúe.")
 else:

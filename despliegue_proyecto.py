@@ -141,7 +141,7 @@ resultado = Y_pred[0]
 
 st.subheader("Resultado de la Predicción:")
 
-if resultado == 1:
+if resultado == '1':
     st.success("🎓 **¡Felicidades!** Es probable que el estudiante se gradúe.")
 else:
     st.error("⚠️ **Atención:** Según el modelo, el estudiante no se va a graduar.")
